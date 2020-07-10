@@ -15,3 +15,14 @@ threetimes(f)(10, 5)
 # => f(f(f(x, y), y), y)
 # => (2 * (2 * (2 * 10 + 5) + 5) + 5) = 115
 
+@threetimes
+def f(x, y):
+    return(x + y)
+
+f(10, 5) # => 25
+
+@threetimes
+def f(x, y):
+    return(2 * x + y)
+
+f(10, 5) # =>  115
