@@ -32,7 +32,7 @@ threetimes_message()(f)(10, 5)
 def f(x, y):
     return(2 * x + y)
 
-f(10, 5) # => 115
+f(10, 5) # => "115"
 
 @threetimes_message(mes = "Result = ")
 def f(x, y):
