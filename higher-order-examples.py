@@ -1,10 +1,10 @@
 # 
-# Basics and Decorators
+# basics of higher-order function and decorators
 #
 
 def threetimes(f):
     def retfunc(x, y):
-        return (f(f(f(x, y), y), y))
+        print(f(f(f(x, y), y), y))
     return (retfunc)
 
 def f(x, y):
@@ -12,15 +12,9 @@ def f(x, y):
 
 threetimes(f)(10, 5)
 # => f(f(f(x, y), y), y)
-# => (2 * (2 * (2 * 10 + 5) + 5) + 5) = 115
+# => (2 * (2 * (2 * 10 + 5) + 5) + 5) => "115"
 
-@threetimes
-def f(x, y):
-    return(2 * x + y)
-
-f(10, 5) # =>  115
-
-def threetimes(mes):
+def threetimes_message(mes = ""):
     def _threetimes(f):
         def retfunc(x, y):
             print(mes, end="")
@@ -28,13 +22,25 @@ def threetimes(mes):
         return (retfunc)
     return (_threetimes)
 
-@threetimes(mes = "Result = ")
+threetimes_message("Result = ")(f)(10, 5)
+# => "Result = 115"
+
+threetimes_message()(f)(10, 5)
+# => "115"
+
+@threetimes
+def f(x, y):
+    return(2 * x + y)
+
+f(10, 5) # => 115
+
+@threetimes_message(mes = "Result = ")
 def f(x, y):
     return(2 * x + y)
 
 f(10, 5) # => "Result = 115"
 
-@threetimes(mes = "")
+@threetimes_message()
 def f(x, y):
     return (2 * x + y)
 
@@ -46,14 +52,24 @@ f(10, 5) # => "115"
 #
 
 def args_10_5(f):
-    return (lambda : f(10, 5))
+    def _args_10_5():
+        f(10, 5)
+    return (_args_10_5)
 
-args_10_5(f)() # => f(10, 5)
+def f(x, y):
+  print("x = ", x, ", y = ", y)
+
+args_10_5(f)() # => "x =  10 , y =  5"
+
+def f(x, y, z, w):
+  return (4 * x + 3 * y + 2 * z + w)
+
+f(2, 3, 4, 5) # => 30
 
 def f(x):
     return (lambda y: lambda z: lambda w: 4 * x + 3 * y + 2 * z + w)
 
-f(2)(3)(4)(5) # => 4 * 2 + 3 * 3 + 2 * 4 + 5 = 30
+f(2)(3)(4)(5) # => 30
 
 def unfold(pred, f, update, seed):
     if pred(seed):
