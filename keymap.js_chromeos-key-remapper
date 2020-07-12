@@ -6,6 +6,5 @@ const keymap = [
   {'match': 'C-p', 'emit': ['ArrowUp']},
   {'match': 'C-n', 'emit': ['ArrowDown']},
   {'match': 'C-h', 'emit': ['Backspace']},
-  {'match': 'C-d', 'emit': ['Delete']},
   {'match': 'C-m', 'emit': ['Enter']}
 ];
