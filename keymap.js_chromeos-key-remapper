@@ -1,0 +1,11 @@
+const keymap = [
+  {'match': 'C-a', 'emit': ['Home']},
+  {'match': 'C-e', 'emit': ['End']},
+  {'match': 'C-f', 'emit': ['ArrowRight']},
+  {'match': 'C-b', 'emit': ['ArrowLeft']},
+  {'match': 'C-p', 'emit': ['ArrowUp']},
+  {'match': 'C-n', 'emit': ['ArrowDown']},
+  {'match': 'C-h', 'emit': ['Backspace']},
+  {'match': 'C-d', 'emit': ['Delete']},
+  {'match': 'C-m', 'emit': ['Enter']}
+];
