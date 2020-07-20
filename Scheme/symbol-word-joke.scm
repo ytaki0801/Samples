@@ -1,6 +1,5 @@
 #!/usr/bin/env gosh
 ; define lambda cond else if quote(')
-; quasiquote(`) unquote(,) unquote-splicing(,@)
 
 (define div /)
 (define / define)
