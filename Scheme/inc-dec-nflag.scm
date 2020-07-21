@@ -60,7 +60,7 @@
           (else (p x) (p " ")))))
 (define fb
   (lambda (x) 
-    (cond ((= x 0))
-          (else (fb (- x 1))
+    (cond ((ne? x 0))
+          (else (fb (sub x))
                 (c x)))))
 (fb 100)
