@@ -1,6 +1,6 @@
 ;;;; increment, decrement, negative-flag
-(define inc (lambda (x) (+ x 1)))
-(define dec (lambda (x) (- x 1)))
+(define inc (lambda (x) (+ x  1)))
+(define dec (lambda (x) (+ x -1)))
 (define nn? negative?)
 ;;;;
 
@@ -61,6 +61,6 @@
 (define fb
   (lambda (x) 
     (cond ((ne? x 0))
-          (else (fb (sub x))
+          (else (fb (dec x))
                 (c x)))))
 (fb 100)
