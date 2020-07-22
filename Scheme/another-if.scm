@@ -1,7 +1,7 @@
 (define exec1 (lambda (x y) (x)))
-(define exec2  (lambda (x y) (y)))
+(define exec2 (lambda (x y) (y)))
 
-(exec1 (lambda () (display "exec1" ))
+(exec1 (lambda () (display "exec1"))
        (lambda () (display "exec2")))
 ; => exec1
 (exec2 (lambda () (display "exec1" ))
