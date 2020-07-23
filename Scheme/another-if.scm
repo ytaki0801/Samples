@@ -17,8 +17,8 @@
 (define dij (lambda (c1 c2) (c1 (lambda () exec1) (lambda () c2))))
 
 (define gtn (lambda (a b) ((NGN (- a b))
-                            (lambda () exec1)
-                            (lambda () exec2))))
+                            (lambda () exec2)
+                            (lambda () exec1))))
 (define ltn (lambda (a b) ((gtn b a)
                             (lambda () exec1)
                             (lambda () exec2))))
