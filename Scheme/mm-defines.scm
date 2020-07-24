@@ -4,7 +4,6 @@
 (define ndef (lambda (t f) (lambda (n) (cond ((negative? n) t) (else f)))))
 ;;;;
 
-
 ; #t, #f, negative?
 (define exec1 (lambda (x y) (x)))
 (define exec2 (lambda (x y) (y)))
