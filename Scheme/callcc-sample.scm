@@ -43,8 +43,8 @@
 
 ; #継続（call/cc）の利用例
 
-; ##大域脱出
-; 手続き定義のlambdaの直後にcall/ccを設定することで，不具合が出た時などに，
+; ##繰り返し処理からの脱出
+; 手続き定義本体の直前にcall/ccを設定することで，不具合が出た時などに，
 ; 『何も残っていない』継続処理を行わせることで，処理全体を終了できる．
 
 ; 不具合が出た時などに処理を終了したい場合は，通常，不具合か否かを判断し，
@@ -55,13 +55,12 @@
   (lambda (L)
     (let loop ((L L))
       (cond ((null? L) "No Error")
+            ((= (car L) 0) "Zero Error")
             (else
-             (cond ((= (car L) 0) "Zero Error")
-                   (else
-                    (display (format "100.0/~w=~w" (car L) (/. 100.0 (car L))))
-                    (newline)
-                    (loop (cdr L))
-                    (display "Return Check") (newline))))))))
+             (display (format "100.0/~w=~w" (car L) (/. 100.0 (car L))))
+             (newline)
+             (loop (cdr L))
+             (display "Return Check") (newline))))))
 (100div-list '(5 1 3 8 4 2))
 ; => 100.0/5=20.0
 ;    100.0/1=100.0
@@ -93,8 +92,8 @@
       (lambda (jmp)
         (let loop ((L L))
           (cond ((null? L) (jmp "No Error"))
+                ((= (car L) 0) (jmp "Zero Error"))
                 (else
-                 (cond ((= (car L) 0) (jmp "Zero Error")))
                  (display (format "100.0/~w=~w" (car L) (/. 100.0 (car L))))
                  (newline)
                  (loop (cdr L))
