@@ -1,10 +1,9 @@
 const keymap = [
-  {'match': 'C-a', 'emit': ['Home']},
-  {'match': 'C-e', 'emit': ['End']},
-  {'match': 'C-f', 'emit': ['ArrowRight']},
-  {'match': 'C-b', 'emit': ['ArrowLeft']},
-  {'match': 'C-p', 'emit': ['ArrowUp']},
-  {'match': 'C-n', 'emit': ['ArrowDown']},
-  {'match': 'C-h', 'emit': ['Backspace']},
+  {'match': 'C-f', 'emit': ['ArrowRight']}, // cursor: forward one character
+  {'match': 'C-b', 'emit': ['ArrowLeft']}, // cursor: back one character
+  {'match': 'C-p', 'emit': ['ArrowUp']}, // cursor: previous line
+  {'match': 'C-n', 'emit': ['ArrowDown']}, // cursor: next line
+  {'match': 'C-h', 'emit': ['Backspace']}, // cursor: backspace
+  {'match': 'C-d', 'emit': ['Delete']}, // cursor: delete one char
   {'match': 'C-m', 'emit': ['Enter']}
 ];
