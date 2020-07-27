@@ -45,31 +45,23 @@
 (display (ToINT (ChPOW one  four)))    ; => 1^4 = 1
 
 ;;;; Z(Y) combinator
+; (define loop '((lambda (x) ((x x))) (lambda (x) ((x x)))))
+; (define Y '(lambda (f) ((lambda (x) (f ((x x))) (lambda (x) (f ((x x)))))))
 
-(define Z
-  (lambda (p)
-    ((lambda (f)
-      (p (lambda (x)
-           ((f f) x))))
-     (lambda (f)
-       (p (lambda (x)
-            ((f f) x)))))))
-(define fact
-  (lambda (f)
-    (lambda (x)
-      (cond ((= x 0) 1) (else (* x (f (- x 1))))))))
-(display ((Z fact) 5))    ; => 120
+(define Z (lambda (f) ((lambda (x) (f (lambda (y) ((x x) y)))) (lambda (x) (f (lambda (y) ((x x) y)))))))
+(define fact (Z (lambda (g) (lambda (n) (if (= n 0) 1 (* (g (- n 1)) n))))))
+(display (fact 5))    ; => 120
 
 (display
- (((lambda (p)
-     ((lambda (f)
-       (p (lambda (x)
-            ((f f) x))))
-      (lambda (f)
-        (p (lambda (x)
-             ((f f) x))))))
-   (lambda (f)
-     (lambda (x)
-       (cond ((= x 0) 1) (else (* x (f (- x 1))))))))
+ (((lambda (f)
+     ((lambda (x)
+       (f (lambda (y)
+            ((x x) y))))
+      (lambda (x)
+        (f (lambda (y)
+             ((x x) y))))))
+   (lambda (g)
+     (lambda (n)
+       (cond ((= n 0) 1) (else (* n (g (- n 1))))))))
   5))
 ; => 120
