@@ -1,3 +1,37 @@
+#|
+; (lambda (x) x)
+gosh> ((lambda (x) x) 10)
+10
+gosh> ((lambda () display "Hello"))
+"Hello"
+gosh> ((lambda (y) y) 10)
+10
+gosh> (((lambda (x) (lambda (y) (+ x y))) 10) 20)
+30
+gosh> (((lambda (z) (lambda (y) (+ z y))) 10) 20)
+30
+gosh> (((lambda (y) (lambda (y) (+ y y))) 10) 20)
+40
+gosh> (((lambda (f) (lambda (x) (* (f x) 2))) (lambda (y) (+ y 1))) 10)
+22
+gosh> ((lambda (x) (* (+ x 1) 2)) 10)
+22
+gosh> (define (inc y) (+ y 1))
+inc
+gosh> (((lambda (f) (lambda (x) (* (f x) 2))) inc) 10)
+22
+gosh> (define (inc_rec) (lambda (y) (+ y 1)))
+inc_rec
+gosh> (define inc (inc_ret))
+inc
+gosh> (define (fnc_ret f) (lambda (x) (* (f x) 2)))
+fnc_ret
+gosh> (define fnc (fnc_ret inc))
+fnc
+gosh> (fnc 10)
+22
+|#
+
 ;;;; Church booleans
 (define gtn
   (lambda (a b)
