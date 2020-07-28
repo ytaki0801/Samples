@@ -75,5 +75,5 @@
 (display (fact 5))    ; => 120
 (newline)
 (define fib (Z (lambda (g) (lambda (n) (lambda (f1) (lambda (f2) (if (= n 0) f1 (((g (- n 1)) f2) (+ f1 f2)))))))))
-(display (((fib 40) 0) 1))
+(display (((fib 40) 0) 1))    ; => 102334155
 (newline)
