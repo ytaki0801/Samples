@@ -111,3 +111,9 @@ gosh> (fnc 10)
 (define fib (Z (lambda (g) (lambda (n) (lambda (f1) (lambda (f2) (if (= n 0) f1 (((g (- n 1)) f2) (+ f1 f2)))))))))
 (display (((fib 40) 0) 1))    ; => 102334155
 (newline)
+
+;;;; fixpoint combinator
+(define G (lambda (f) (f (lambda (y) ((G f) y)))))
+(define fibG (G (lambda (g) (lambda (n) (lambda (f1) (lambda (f2) (if (= n 0) f1 (((g (- n 1)) f2) (+ f1 f2)))))))))
+(display (((fibG 40) 0) 1))    ; => 102334155
+(newline)
