@@ -85,5 +85,3 @@ print(g (\fact -> \n -> if n == 0 then 1 else n * fact (n-1)) 5)
 -- => 120
 print(g (\fib -> \x -> \f1 -> \f2 -> if x == 0 then f1 else fib (x-1) f2 (f1+f2)) 40 0 1)
 -- => 102334155
--- "Occurs check: cannot construct the infinite type:" for "fib"
--- print((\fib -> (fib fib) 40 0 1) (\fib -> \x -> \f1 -> \f2 -> if n == 0 then f1 else (fib fib) (x-1) f2 (f1+f2)))
