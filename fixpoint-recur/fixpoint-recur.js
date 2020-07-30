@@ -1,4 +1,4 @@
-const g = f => f(y => g(f)(y))
+g = f => f(y => g(f)(y))
 
 console.log(g(fib => n => f1 => f2 => n == 0 ? f1 : fib(n-1)(f2)(f1+f2))(50)(0)(1))
 // => 12586269025
