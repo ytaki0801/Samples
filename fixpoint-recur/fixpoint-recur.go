@@ -15,6 +15,6 @@ func main() {
                     })
                 })
         }
-        var rz = Z(func(f func(INT) INT) func(INT) INT { return func(n INT) INT { if n == 0 { return 1 } else { return n * f(n-1) } } })(5)
-	fmt.Println(rz)
+    var rz = Z(func(f func(INT) INT) func(INT) INT { return func(n INT) INT { if n == 0 { return 1 } else { return n * f(n-1) } } })(5)
+    fmt.Println(rz)
 }
