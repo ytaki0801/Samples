@@ -25,10 +25,6 @@
 ; Example 3
 (define func (lambda (x) (lambda (y) (* x y))))
 (define fx (func 5))
-(print (map fx (iota 10)))    ; => (0 5 10 15 20 25 30 35 40 45)
+(print (map fx (iota 10)))          ; => (0 5 10 15 20 25 30 35 40 45)
 (define fy (map func (iota 10)))
-(print
-  (letrec ((m (lambda (f x l)
-                (cond ((null? f) (reverse l))
-                      (else (m (cdr f) x (cons ((car f) x) l)))))))
-    (m fy 5 '())))            ; => (0 5 10 15 20 25 30 35 40 45)
+(print (map (lambda (f) (f 5)) fy)) ; => (0 5 10 15 20 25 30 35 40 45)
