@@ -19,3 +19,10 @@ print(dict(zip(T, map(func2, T))))
 def recur(f, t): return f if not t else recur(f(t[0]), t[1:])
 print(dict(zip(T, map(recur(func, ('正', '負', 'ゼロ')), T))))
 # => {3: '正', -2: '負', 0: 'ゼロ', 1: '正', -7: '負'}
+def is_t(t):
+    def r(v): return isinstance(v, t)
+    return r
+
+T = 10, "hoge", 20.4, False, "hage"
+print(tuple(map(is_t(str), T)))    # => (False, True, False, False, True)
+print(tuple(map(is_t(int), T)))    # => (True, False, False, True, False)
