@@ -1,4 +1,4 @@
-# readlist('( hoge hage ( hige ( foo bar ) ) baz )')
+# readlist('(hoge hage (hige (foo bar)) baz)')
 # => ('hoge', 'hage', ('hige', ('foo', 'bar')), 'baz')
 def readlist(x):
     xl = x.replace('(', ' ( ').replace(')', ' ) ').split()
