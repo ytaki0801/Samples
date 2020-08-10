@@ -1,4 +1,12 @@
 ####
+ToCHR = lambda n: (lambda f: lambda x: x) if n == 0 else (lambda f: lambda x: f(ToCHR(n - 1)(f)(x)))
+ToINT = lambda ch: ch(lambda x: x + 1)(0)
+GT = lambda a: lambda b: (lambda x: lambda y: x) if ToINT(a) > ToINT(b) else (lambda x: lambda y: y)
+GT(ToCHR(10))(ToCHR(9))('T')('F')    # => 'T'
+GT(ToCHR(9))(ToCHR(10))('T')('F')    # => 'F'
+
+
+####
 L = range(1,4)
 R = []
 for x in L:
