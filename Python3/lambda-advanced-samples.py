@@ -23,6 +23,7 @@ print(list(map(fix(lambda fact: lambda r: lambda n:
                   )(1), range(1, 6))))
 # => [1, 2, 6, 24, 120]
 
+
 ####
 print(
     (lambda f:
