@@ -23,3 +23,12 @@
              (receive (a b) (partition (lambda (x) (< x p)) (cdr L))
                (append (qsort2 a) (list p) (qsort2 b)))))))
 (display (qsort2 D)) (newline)
+
+(define qsort3
+  (lambda (L)
+    (if (null? L) '()
+        (let* ((p (car L))
+               (a (filter (lambda (x) (<  x p)) (cdr L)))
+               (b (filter (lambda (x) (>= x p)) (cdr L))))
+          (append (qsort3 a) (list p) (qsort3 b))))))
+(display (qsort3 D)) (newline)
