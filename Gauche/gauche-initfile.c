@@ -19,7 +19,7 @@ int main(int argc, char **argv)
   Scm_Init(GAUCHE_SIGNATURE);
 
   ScmLoadPacket lRet;
-  if(Scm_Load(APPINITSCM, 0, &lRet) < 0) {
+  if (Scm_Load(APPINITSCM, 0, &lRet) < 0) {
     printf("There is no %s.\n", APPINITSCM);
     return (1);
   }

@@ -1,5 +1,6 @@
 #OBJ=gauche-fib
-OBJ=gauche-initfile
+#OBJ=gauche-initfile
+OBJ=gauche-call
 SRC=${OBJ}.c
 
 ${OBJ}: ${SRC}
