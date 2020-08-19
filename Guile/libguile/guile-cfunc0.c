@@ -22,12 +22,10 @@ int main(int argc, char **argv)
   sprintf(appinitfile, "%s%s%s", getenv("HOME"), "/", APPINITSCM);
   scm_c_primitive_load(appinitfile);
  
-  SCM proc = scm_variable_ref(scm_c_lookup("cfib-itr"));
+  SCM proc = scm_variable_ref(scm_c_lookup("cfib-itr-str"));
   SCM eRet = scm_call_1(proc, scm_from_int(10));
 
-  for (int i = 0; i < scm_to_int(scm_length(eRet)); i++)
-    printf("%d ", scm_to_int(scm_list_ref(eRet, scm_from_int(i))));
-  printf("\n");
+  printf("%s\n", scm_to_latin1_string(eRet));
  
   return (0);
 }

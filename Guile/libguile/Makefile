@@ -1,4 +1,4 @@
-#OBJ=guile-initfile
+#OBJ=guile-cfunc0
 OBJ=guile-cfunc
 SRC=${OBJ}.c
 
