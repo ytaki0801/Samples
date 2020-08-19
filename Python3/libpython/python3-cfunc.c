@@ -33,7 +33,6 @@ int main(int argc, char *argv[])
     printf("module init error\n"); exit(1);
   }
 
-  Py_SetProgramName((wchar_t *)argv[0]);
   Py_Initialize();
 
   char filename[256];
