@@ -1,5 +1,6 @@
 #OBJ=python3-cfunc0
 OBJ=python3-cfunc
+#OBJ=python3-cfunc-listargs
 SRC=${OBJ}.c
 
 ${OBJ}: ${SRC}
