@@ -1,5 +1,6 @@
 #OBJ=guile-cfunc0
-OBJ=guile-cfunc
+#OBJ=guile-cfunc
+OBJ=guile-cfunc-listargs
 SRC=${OBJ}.c
 
 ${OBJ}: ${SRC}
