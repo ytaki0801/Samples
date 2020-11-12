@@ -1,3 +1,7 @@
+;;;;
+;;;; pseudo-property list operations
+;;;;
+
 (define *plist* '())
 
 (define (symbol-plist symbol)
@@ -16,7 +20,7 @@
 	(else (cons (car pl)
 		    (delete-plist symbol (cdr pl))))))
 
-(define (setf-plist! symbol key data)
+(define (putprop! symbol data key)
   (let ((r (assq symbol *plist*)))
     (set! *plist*
       (if (not r)
@@ -43,13 +47,9 @@
 		    (delete-plist symbol *plist*)))
 	    r1)))))
 
-; for GNU Guile
-(defmacro setf! (gets val)
-  `(setf-plist! ,(cadr gets) ,(caddr gets) ,val))
-
-;;;; sample codes at http://www.nct9.ne.jp/m_hiroi/clisp/abcl12.html
-(display (setf! (get 'taro 'height) 180)) (newline)
-(display (setf! (get 'taro 'weight) 80)) (newline)
+;;;; sample at http://www.nct9.ne.jp/m_hiroi/clisp/abcl12.html
+(display (putprop! 'taro 180 'height)) (newline)
+(display (putprop! 'taro 80 'weight)) (newline)
 (display (symbol-plist 'taro)) (newline)
 (display (get 'taro 'height)) (newline)
 (display (get 'taro 'weight)) (newline)
@@ -57,4 +57,12 @@
 (display (remprop! 'taro 'height)) (newline)
 (display (get 'taro 'height)) (newline)
 (display (symbol-plist 'taro)) (newline)
+
+;;;; sample at http://www.et.hum.titech.ac.jp/~matsuda/lisp/5kai/5-2.html
+(display (putprop! 'matsuda 'male 'sex)) (newline)
+(display (get 'matsuda 'sex)) (newline)
+(display (putprop! 'matsuda 167 'height)) (newline)
+(display (symbol-plist 'matsuda)) (newline)
+(display (remprop! 'matsuda 'height)) (newline)
+(display (symbol-plist 'matsuda)) (newline)
 
