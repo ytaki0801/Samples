@@ -1,0 +1,18 @@
+[Python]
+(lambda g:g(g))(lambda g:lambda a:lambda b:lambda n:a if n==0 else g(g)(b)(a+b)(n-1))(0)(1)(40)
+
+[Ruby]
+->g{g[g]}[->g{->a{->b{->n{n==0?a:g[g][b][a+b][n-1]}}}}][0][1][40]
+
+[JavaScript (Node.js)]
+(g=>g(g))(g=>a=>b=>n=>n==0?a:g(g)(b)(a+b)(n-1))(0)(1)(40)
+
+[Julia]
+(g->g(g))(g->a->b->n->n==0 ? a : g(g)(b)(a+b)(n-1))(0)(1)(40)
+
+[Scheme]
+(((((lambda (g) (g g)) (lambda (g) (lambda (a) (lambda (b) (lambda (n) (if (= n 0) a ((((g g) b) (+ a b)) (- n 1)))))))) 0) 1) 40)
+
+[Common Lisp/Emacs Lisp] Emacs Lisp: (setq lexical-binding t)
+(funcall (funcall (funcall (funcall (lambda (g) (funcall g g)) (lambda (g) (lambda (a) (lambda (b) (lambda (n) (if (= n 0) a (funcall (funcall (funcall (funcall g g) b) (+ a b)) (- n 1)))))))) 0) 1) 40)
+
