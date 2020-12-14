@@ -1,5 +1,5 @@
 ;;;;
-;;;; pi-machine.scm
+;;;; pi-machin.scm
 ;;;;
 ;;;; Calculating Pi by Machin Method
 ;;;;
