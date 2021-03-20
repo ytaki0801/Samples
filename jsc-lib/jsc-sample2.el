@@ -9,8 +9,8 @@
 
 (jsc-html
  (jsc 'line (fgen
-;	     'sin
-	     (lambda (x)
-	       (let ((th (* x x)))
-		 (+ (sin th) (cos th))))
+	     'sin
+;	     (lambda (x)
+;	       (let ((th (* x x)))
+;		 (+ (sin th) (cos th))))
 	     (- (* 2 pi)) (* 2 pi) 0.05)))
