@@ -12,7 +12,7 @@
 
 (defun fib3 (x f1 f2)
   (while (>= x 0)
-    (setq r f1
+    (setq r  f1
 	  f1 f2
 	  f2 (+ r f2)
 	  x  (- x 1)))
