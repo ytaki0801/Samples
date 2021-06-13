@@ -37,6 +37,7 @@
 (display (numeval
   '(((^g(g g))(^g(^nr(? n -1 r((g g) (+ n -1)($(((^g(g g))(^g(^nab(? n 0 a((g g)(+ n -1)b(+ a b))))))n 0 1)r))))))21 '())
   '())) (newline)
+
 (display (numeval
   '(((^g(g g))(^g(^nr(? n 1 r(?(((^g (g g))(^g(^nx(? n x 1(? (% n x)0 -1((g g)n(+ x 1)))))))n 2)1((g g)(+ n -1)($ n r))((g g)(+ n -1)r))))))100 '())
  '())) (newline)
