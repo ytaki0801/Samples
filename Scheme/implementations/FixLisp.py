@@ -1,5 +1,5 @@
 #
-# FixLisp: simple meta-circular evaluator
+# FixLisp: simple LISP evaluator
 # with S-expression input/output, basic list processing,
 # pseudo-integers and fixed-point combinator
 #
