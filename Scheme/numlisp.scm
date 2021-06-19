@@ -24,10 +24,10 @@
 				((eq? f '$) (cons (car v) (cadr v)))))))))
       (cond ((number? e) e)
 	    ((member e '($ + * ^ %)) e)
-	    (else
-	     (cdr (assq e a))))))
+	    (else (cdr (assq e a))))))
 
-(write (numeval (read) '())) (newline)
+(write (numeval (read) '()))
+(newline)
 
 #|
 (display (numeval
