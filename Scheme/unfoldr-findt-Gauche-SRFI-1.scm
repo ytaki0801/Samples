@@ -12,9 +12,15 @@
   (unfold-right null? (^x (f (car x))) (^x (cdr x)) (myreverse s)))
 (print (mymap1 (^x (+ x 1)) '(10 20 30 40 50))) ; => (11 21 31 41 51)
 
-(define (myrange s e d)
-  (myreverse (unfold-right (^x (> x (- e 1))) identity (^x (+ x d)) s)))
-(print (myrange 11 17 1)) ; => (11 12 13 14 15 16)
+(define (myiota c . sd)
+  (let ((c c) (s (if (null? sd) 0 (car sd)))
+        (d (if (or (null? sd) (null? (cdr sd))) 1 (cadr sd))))
+    (myreverse (unfold-right (^x (> x (- c 1)))
+                             (^x (+ (* x d) s))
+                             (^x (+ x 1)) 0))))
+(print (myiota 6)) ; => (0 1 2 3 4 5)
+(print (myiota 6 11)) ; => (11 12 13 14 15 16)
+(print (myiota 6 1 2)) ; => (1 3 5 7 9 11)
 
 (define (myfind p s)
   (let ((r (find-tail p s)))
@@ -34,6 +40,6 @@
 (define (myfilter p s)
   (unfold-right not (^x (car x)) (^x (find-tail p (cdr x)))
                 (find-tail p (myreverse s))))
-(print (myfilter even? (myrange 0 10 1))) ; => (0 2 4 6 8)
-(print (myfilter even? (myrange 1 12 2))) ; => ()
+(print (myfilter even? (myiota 10))) ; => (0 2 4 6 8)
+(print (myfilter even? (myiota 6 1 2))) ; => ()
 
