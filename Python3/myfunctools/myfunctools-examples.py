@@ -1,4 +1,3 @@
-from myfunctools import unfold_right, find_tail
 from myfunctools import reverse, append, map1, range
 from myfunctools import find, member, assoc, filter
 
@@ -35,4 +34,3 @@ print(filter(lambda x: x % 2 == 0, range(0, 10)))
 # => [0, 2, 4, 6, 8]
 print(filter(lambda x: x % 2 == 0, range(1, 12, 2)))
 # => []
-
