@@ -1,4 +1,4 @@
-from myfunctools import reverse, append, map1, range
+from myfunctools import reverse, append, map1, iota
 from myfunctools import find, member, assoc, filter
 
 print(reverse([1, 2, 3, 4, 5]))
@@ -10,12 +10,12 @@ print(append(['a', 'b', 'c'], ['x', 'y', 'z']))
 print(map1(lambda x: x + 1, [10, 20, 30, 40, 50]))
 # => [11, 21, 31, 41, 51]
 
-print(range(10))
-# => [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-print(range(11, 17))
+print(iota(6))
+# => [0, 1, 2, 3, 4, 5]
+print(iota(6, 11))
 # => [11, 12, 13, 14, 15, 16]
-print(range(0, 10, 2))
-# => [0, 2, 4, 6, 8]
+print(iota(6, 1, 2))
+# => [1, 3, 5, 7, 9, 11]
 
 print(find(lambda x: x == 'c', ['a', 'b', 'c', 'd', 'e']))
 # => c
@@ -30,7 +30,8 @@ print(member('z', ['a', 'b', 'c', 'd', 'e']))
 print(assoc('b', [('a',1), ('b',2), ('c',3), ('b',4), ('e',5)]))
 # => ('b', 2)
 
-print(filter(lambda x: x % 2 == 0, range(0, 10)))
+print(filter(lambda x: x % 2 == 0, iota(10)))
 # => [0, 2, 4, 6, 8]
-print(filter(lambda x: x % 2 == 0, range(1, 12, 2)))
+print(filter(lambda x: x % 2 == 0, iota(6, 1, 2)))
 # => []
+

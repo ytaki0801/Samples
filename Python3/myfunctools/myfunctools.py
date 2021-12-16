@@ -29,14 +29,14 @@ def map1(f, s):
                         lambda x: x[1:],
                         reverse(s))
 
-def range(a, *rest):
-    if   len(rest) == 0: s, e, d = 0, a, 1
-    elif len(rest) == 1: s, e, d = a, rest[0], 1
-    else: s, e, d = a, rest[0], rest[1]
-    return reverse(unfold_right(lambda x: x > e - 1,
-                                lambda x: x,
-                                lambda x: x + d,
-                                s))
+def iota(c, *rest):
+    if   len(rest) == 0: s, d = 0, 1
+    elif len(rest) == 1: s, d = rest[0], 1
+    else: s, d = rest[0], rest[1]
+    return reverse(unfold_right(lambda x: x > c - 1,
+                                lambda x: x * d + s,
+                                lambda x: x + 1,
+                                0))
 
 def find(p, s):
     r = find_tail(p, s)

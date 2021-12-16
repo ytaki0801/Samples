@@ -23,7 +23,7 @@
 (print (mymap1 (lambda (x) (+ x 1)) '(10 20 30 40 50))) ; => (11 21 31 41 51)
 
 (define (myiota c . sd)
-  (let ((c c) (s (if (null? sd) 0 (car sd)))
+  (let ((s (if (null? sd) 0 (car sd)))
 	(d (if (or (null? sd) (null? (cdr sd))) 1 (cadr sd))))
     (myreverse (myunfold-right (lambda (x) (> x (- c 1)))
 			       (lambda (x) (+ (* x d) s))
