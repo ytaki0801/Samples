@@ -22,9 +22,9 @@ def append(a, b):
     def g(x): return x[1:]
     return unfold_right(p, f, g, reverse(a), b)
 
-def map1(f1, s):
+def map1(func, s):
     def p(x): return not x
-    def f(x): return f1(x[0])
+    def f(x): return func(x[0])
     def g(x): return x[1:]
     return unfold_right(p, f, g, reverse(s))
 
@@ -46,11 +46,12 @@ def member(e, s):
     return find_tail(p, s)
 
 def assoc(k, al):
-    return find_tail(lambda x: x[0] == k, al)[0]
+    def p(x): return x[0] == k
+    return find_tail(p, al)[0]
 
-def filter(p, s):
-    return unfold_right(lambda x: not x,
-                        lambda x: x[0],
-                        lambda x: find_tail(p, x[1:]),
-                        find_tail(p, reverse(s)))
+def filter(pred, s):
+    def p(x): return not x
+    def f(x): return x[0]
+    def g(x): return find_tail(pred, x[1:])
+    return unfold_right(p, f, g, find_tail(pred, reverse(s)))
 
