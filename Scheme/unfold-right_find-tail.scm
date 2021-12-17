@@ -11,15 +11,15 @@
 	  (else (loop (cdr r))))))
 
 (define (myreverse a)
-  (myunfold-right null? (lambda (x) (car x)) (lambda (x) (cdr x)) a))
+  (myunfold-right null? car cdr a))
 (print (myreverse '(1 2 3 4 5))) ; => (5 4 3 2 1)
 
 (define (myappend a b)
-  (myunfold-right null? (lambda (x) (car x)) (lambda (x) (cdr x)) (myreverse a) b))
+  (myunfold-right null? car cdr (myreverse a) b))
 (print (myappend '(a b c) '(x y z))) ; => (a b c x y z)
 
 (define (mymap1 f s)
-  (myunfold-right null? (lambda (x) (f (car x))) (lambda (x) (cdr x)) (myreverse s)))
+  (myunfold-right null? (lambda (x) (f (car x))) cdr (myreverse s)))
 (print (mymap1 (lambda (x) (+ x 1)) '(10 20 30 40 50))) ; => (11 21 31 41 51)
 
 (define (myiota c . sd)
@@ -48,7 +48,7 @@
 (print (myassoc 'b '((a . 1) (b . 2) (c . 3) (b . 4) (e . 5)) eq?)) ; => (b . 2)
 
 (define (myfilter p s)
-  (myunfold-right not (lambda (x) (car x)) (lambda (x) (myfind-tail p (cdr x)))
+  (myunfold-right not car (lambda (x) (myfind-tail p (cdr x)))
                 (myfind-tail p (myreverse s))))
 (print (myfilter even? (myiota 10))) ; => (0 2 4 6 8)
 (print (myfilter even? (myiota 6 1 2))) ; => ()

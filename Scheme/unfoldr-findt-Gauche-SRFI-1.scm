@@ -1,15 +1,15 @@
 (use srfi-1)
 
 (define (myreverse a)
-  (unfold-right null? (^x (car x)) (^x (cdr x)) a))
+  (unfold-right null? car cdr a))
 (print (myreverse '(1 2 3 4 5))) ; => (5 4 3 2 1)
 
 (define (myappend a b)
-  (unfold-right null? (^x (car x)) (^x (cdr x)) (myreverse a) b))
+  (unfold-right null? car cdr (myreverse a) b))
 (print (myappend '(a b c) '(x y z))) ; => (a b c x y z)
 
 (define (mymap1 f s)
-  (unfold-right null? (^x (f (car x))) (^x (cdr x)) (myreverse s)))
+  (unfold-right null? (^x (f (car x))) cdr (myreverse s)))
 (print (mymap1 (^x (+ x 1)) '(10 20 30 40 50))) ; => (11 21 31 41 51)
 
 (define (myiota c . sd)
@@ -38,7 +38,7 @@
 (print (myassoc 'b '((a . 1) (b . 2) (c . 3) (b . 4) (e . 5)) eq?)) ; => (b . 2)
 
 (define (myfilter p s)
-  (unfold-right not (^x (car x)) (^x (find-tail p (cdr x)))
+  (unfold-right not car (^x (find-tail p (cdr x)))
                 (find-tail p (myreverse s))))
 (print (myfilter even? (myiota 10))) ; => (0 2 4 6 8)
 (print (myfilter even? (myiota 6 1 2))) ; => ()
