@@ -18,11 +18,12 @@ print(iota(6, 11))
 print(iota(6, 1, 2))
 # => [1, 3, 5, 7, 9, 11]
 
-def equal_c(x): return x == 'c'
-print(find(equal_c, ['a', 'b', 'c', 'd', 'e']))
+def equal(a):
+    def f(x): return x == a
+    return f
+print(find(equal('c'), ['a', 'b', 'c', 'd', 'e']))
 # => c
-def equal_z(x): return x == 'z'
-print(find(equal_z, ['a', 'b', 'c', 'd', 'e']))
+print(find(equal('z'), ['a', 'b', 'c', 'd', 'e']))
 # => False
 
 print(member('c', ['a', 'b', 'c', 'd', 'e']))

@@ -1,3 +1,5 @@
+from operator import not_
+
 def unfold_right(p, f, g, seed, init=[]):
     e, r = seed, init
     while not p(e): e, r = g(e), [f(e)] + r
@@ -11,22 +13,19 @@ def find_tail(p, a):
     return r if r else False
 
 def reverse(a):
-    def p(x): return not x
     def f(x): return x[0]
     def g(x): return x[1:]
-    return unfold_right(p, f, g, a)
+    return unfold_right(not_, f, g, a)
 
 def append(a, b):
-    def p(x): return not x
     def f(x): return x[0]
     def g(x): return x[1:]
-    return unfold_right(p, f, g, reverse(a), b)
+    return unfold_right(not_, f, g, reverse(a), b)
 
 def map1(func, s):
-    def p(x): return not x
     def f(x): return func(x[0])
     def g(x): return x[1:]
-    return unfold_right(p, f, g, reverse(s))
+    return unfold_right(not_, f, g, reverse(s))
 
 def iota(c, *rest):
     if   len(rest) == 0: s, d = 0, 1
@@ -50,8 +49,7 @@ def assoc(k, al):
     return find_tail(p, al)[0]
 
 def filter(pred, s):
-    def p(x): return not x
     def f(x): return x[0]
     def g(x): return find_tail(pred, x[1:])
-    return unfold_right(p, f, g, find_tail(pred, reverse(s)))
+    return unfold_right(not_, f, g, find_tail(pred, reverse(s)))
 
