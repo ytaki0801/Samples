@@ -1,5 +1,7 @@
 from operator import not_
 
+########################################
+
 def unfold_right(p, f, g, seed, init=[]):
     e, r = seed, init
     while not p(e): e, r = g(e), [f(e)] + r
@@ -11,6 +13,11 @@ def find_tail(p, a):
         if p(r[0]): break
         else: r = r[1:]
     return r if r else False
+
+########################################
+
+#def reduce(func, iter, init=None):
+#    unfold_right(
 
 def reverse(a):
     def f(x): return x[0]
